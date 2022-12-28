@@ -1,6 +1,7 @@
 const {response} = require('express') // No es necesario, pero sirve para recueprar las ayudas del idle
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
+const { generarJWT } = require('../helpers/jwt');
 
 const createUser = async(req, res = response) => {// el = response no es necesario, pero ayuda a recuperar las ayudas del idle
     const { email, password } = req.body;
@@ -19,11 +20,14 @@ const createUser = async(req, res = response) => {// el = response no es necesar
         user.password = bcrypt.hashSync( password, salt );
 
         await user.save();
+
+        const token = await generarJWT( user.id, user.name );
         
         res.status(201).json({
             ok: true,
             uid: user.id,
             name: user.name,
+            token
         });
     }catch(error){
         console.log(error);
@@ -59,11 +63,13 @@ const userLogin = async(req, res) => {
             })
         }
         //Generar JWT
+        const token = await generarJWT( user.id, user.name );
 
-        res.status(201).json({
+        res.status(200).json({
             ok:true,
             uid: user.id,
-            name: user.name
+            name: user.name,
+            token
         });
         
     } catch (error) {
