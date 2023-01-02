@@ -34,5 +34,4 @@ Esta api esta diseñada para almacenar, manipular y brindar información acerca 
 ### Como ejecutar el server
 ```
 npm run dev
-
 ```
