@@ -4,6 +4,17 @@ Esta api esta diseñada para almacenar, manipular y brindar información acerca 
 
 #### Api Link: https://mern-calendar-daniel-mamian.herokuapp.com/
 
+![Image text](public/images/actualizar-evento.png)
+![Image text](public/images/borrar-eventos.png)
+![Image text](public/images/crear-evento.png)
+![Image text](public/images/crear-usuario.png)
+![Image text](public/images/getEvents.png)
+![Image text](public/images/login.png)
+![Image text](public/images/revalidar-jwt.png)
+### Routes:
+
+-   POST https://mern-calendar-daniel-mamian.herokuapp.com/api/auth
+
 ### Esta creada con:
 
 - NodeJs
