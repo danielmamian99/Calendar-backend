@@ -11,7 +11,7 @@ const app = express();
 dbConnection();
 
 //CORS
-app.use(cors())
+app.use(cors());
 
 //Directorio publico
 app.use( express.static('public') );
@@ -21,9 +21,11 @@ app.use( express.json() );
 
 // auth// crear, login, renew token
 app.use('/api/auth', require('./routes/auth') );
-//TODO: CRUD: Eventos
 app.use('/api/events', require('./routes/events') );
 
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+})
 //Escuchar peticiones
 app.listen( process.env.PORT, ()=>{
     console.log(`Servidor corriendo en el puerto ${ process.env.PORT }`);
